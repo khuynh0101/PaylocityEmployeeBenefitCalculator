@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.Service", "Paylocity.Service\Paylocity.Service.csproj", "{2357A783-8012-487E-9CA3-A77102ABFF90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.Logging", "Paylocity.Logging\Paylocity.Logging.csproj", "{EE405F48-509B-400E-A9BA-FAB00850B3DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.EmployeeBenefitsCalculator", "Paylocity.EmployeeBenefitCalculator\Paylocity.EmployeeBenefitsCalculator.csproj", "{69979751-27D5-45E4-AE10-253C9E714BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.EmployeeBenefitCalculatorTest", "Paylocity.EmployeeBenefitCalculatorTest\Paylocity.EmployeeBenefitCalculatorTest.csproj", "{BF4C8C2D-4D78-4663-8B09-76CD4F9BBBD9}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Paylocity.Database", "Paylocity.EmployeeDatabase\Paylocity.Database.sqlproj", "{8537B7C5-64DE-4A40-976F-70CAA19B042D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.Data", "Paylocity.Data\Paylocity.Data.csproj", "{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2357A783-8012-487E-9CA3-A77102ABFF90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2357A783-8012-487E-9CA3-A77102ABFF90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2357A783-8012-487E-9CA3-A77102ABFF90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2357A783-8012-487E-9CA3-A77102ABFF90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE405F48-509B-400E-A9BA-FAB00850B3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE405F48-509B-400E-A9BA-FAB00850B3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE405F48-509B-400E-A9BA-FAB00850B3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE405F48-509B-400E-A9BA-FAB00850B3DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69979751-27D5-45E4-AE10-253C9E714BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69979751-27D5-45E4-AE10-253C9E714BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69979751-27D5-45E4-AE10-253C9E714BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69979751-27D5-45E4-AE10-253C9E714BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF4C8C2D-4D78-4663-8B09-76CD4F9BBBD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF4C8C2D-4D78-4663-8B09-76CD4F9BBBD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF4C8C2D-4D78-4663-8B09-76CD4F9BBBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF4C8C2D-4D78-4663-8B09-76CD4F9BBBD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8537B7C5-64DE-4A40-976F-70CAA19B042D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8537B7C5-64DE-4A40-976F-70CAA19B042D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8537B7C5-64DE-4A40-976F-70CAA19B042D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8537B7C5-64DE-4A40-976F-70CAA19B042D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8537B7C5-64DE-4A40-976F-70CAA19B042D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8537B7C5-64DE-4A40-976F-70CAA19B042D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB8A16CA-20F0-4C72-B306-590516EA326D}
+	EndGlobalSection
+EndGlobal

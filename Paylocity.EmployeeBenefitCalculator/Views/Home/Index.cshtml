@@ -1,0 +1,56 @@
+﻿@model Paylocity.Service.Models.Employee
+
+@{
+    ViewBag.Title = "Employee Benefits Calculator";
+}
+
+<h1 class="page-header header-title">Employee Benefits Calculator</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h5>Enter employee's information to calculate their benefits cost.</h5>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.Dependents, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div id="dependentsContainer" class="col-md-10">
+        </div>
+    </div>
+    <div class="form-group">
+        <div id="dependentsContainer" class="col-md-12 col-md-offset-2">
+            <button onclick="AddDependents(event)" id="AddDecendents">Add</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Preview Benefits Cost" />
+        </div>
+    </div>
+    @if (TempData["IsSaved"] != null && Convert.ToBoolean(TempData["IsSaved"]))
+    {
+        <div>Employee benefits cost saved.</div>
+    }
+</div>
+
+    <div>
+        @{
+            Html.RenderAction("Summary", "Home");
+        }
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom");
+}
