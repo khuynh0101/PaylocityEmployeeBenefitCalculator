@@ -15,6 +15,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Paylocity.Database", "Paylo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.Data", "Paylocity.Data\Paylocity.Data.csproj", "{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Paylocity.WebAPI", "Paylocity.WebAPI\Paylocity.WebAPI.csproj", "{68C2FF30-3989-4910-ACB2-4D52D0B8FC04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EAACE8F-5744-4B3E-A9FE-8789B38727A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68C2FF30-3989-4910-ACB2-4D52D0B8FC04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68C2FF30-3989-4910-ACB2-4D52D0B8FC04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68C2FF30-3989-4910-ACB2-4D52D0B8FC04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68C2FF30-3989-4910-ACB2-4D52D0B8FC04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

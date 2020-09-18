@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Paylocity.Data\Paylocity.Data.csproj">
+      <Project>{1eaace8f-5744-4b3e-a9fe-8789b38727a2}</Project>
+      <Name>Paylocity.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Paylocity.EmployeeBenefitCalculator\Paylocity.EmployeeBenefitsCalculator.csproj">
       <Project>{69979751-27d5-45e4-ae10-253c9e714bb9}</Project>
       <Name>Paylocity.EmployeeBenefitsCalculator</Name>
