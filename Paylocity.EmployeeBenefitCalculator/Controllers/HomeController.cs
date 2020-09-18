@@ -2,6 +2,7 @@
 using Paylocity.Logging;
 //using Paylocity.EmployeeBenefitCalculator.Models;
 using Paylocity.Service;
+using Paylocity.Service.ModelBinder;
 using Paylocity.Service.Models;
 using System;
 using System.Collections.Generic;
@@ -20,18 +21,10 @@ namespace Paylocity.EmployeeBenefitCalculator.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(FormCollection collection)
+        public ActionResult Index([ModelBinder(typeof(EmployeeBinder))] Employee employeeModel)
         {
             if (ModelState.IsValid)
-            {
-                Employee employeeModel = new Employee() { Name = collection["Name"] };
-                string dependents = collection["Dependent"];
-                if (!string.IsNullOrWhiteSpace(dependents))
-                {
-                    employeeModel.Dependents = (from d in dependents.Split(',')
-                                                where !string.IsNullOrWhiteSpace(d)
-                                                select new Dependent() { Name = d }).ToList();
-                }
+            {                
                 employeeModel.BenefitsSummary = new EmployeeBenefitsService(new EmployeeBenefitsRepository()).CalculateBenefitsCost(employeeModel);
                 Session["employee"] = employeeModel;
             }
