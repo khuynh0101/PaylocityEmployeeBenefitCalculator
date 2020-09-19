@@ -17,14 +17,14 @@ namespace Paylocity.Logging
         private static ILog _log = null;
         private static string _logFile = null;
 
-        public static void Initialize(string ApplicationPath)
+        public static void Initialize(string ApplicationPath, string LoggerName)
         {
             _logFile = Path.Combine(ApplicationPath, "App_Data", "errors.log");
             GlobalContext.Properties["LogFileName"] = _logFile;
 
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Path.Combine(ApplicationPath, "Log4Net.config")));
 
-            _log = LogManager.GetLogger("Paylocity");
+            _log = LogManager.GetLogger(LoggerName);
         }
 
         public static string LogFile

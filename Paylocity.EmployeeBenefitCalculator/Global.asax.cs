@@ -19,7 +19,7 @@ namespace Paylocity.EmployeeBenefitCalculator
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Log.Initialize(Server.MapPath("~"));
+            Log.Initialize(Server.MapPath("~"), "Paylocity");
         }
     }
 }
