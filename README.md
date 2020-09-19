@@ -7,3 +7,10 @@ To get this solution working:
 2) Open the PaylocityEmployeeBenefits solution
 
 3) Build the solution.
+
+
+Presentation Layer: MVC
+Data Layer:			Entity Framework
+API Endpoints:		WebAPI
+
+Database:			MS SQL Server
