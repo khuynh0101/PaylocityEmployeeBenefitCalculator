@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using Paylocity.Common.Cache;
 using Paylocity.Data.Repositories;
 using Paylocity.EmployeeBenefitCalculator.Util;
 using Paylocity.Logging;
@@ -7,10 +8,12 @@ using Paylocity.Service;
 using Paylocity.Service.ModelBinder;
 using Paylocity.Service.Models;
 
+
 namespace Paylocity.EmployeeBenefitCalculator.Controllers
 {
     public class HomeController : Controller
     {
+        private ICacheManager<string, Employee> SessionManager = new SessionManager<Employee>();
         public ActionResult Index()
         {
             return View();
@@ -23,21 +26,21 @@ namespace Paylocity.EmployeeBenefitCalculator.Controllers
             if (ModelState.IsValid)
             {                                
                 employeeModel.BenefitsSummary = new EmployeeBenefitsService(new EmployeeBenefitsRepository()).CalculateBenefitsCost(employeeModel);
-                SessionManager<Employee>.Save("employee", employeeModel);
+                SessionManager.Save("employee", employeeModel);
             }
             return View();
         }
 
         public ActionResult Save()
         {
-            Employee employee = SessionManager<Employee>.Retrieve("employee");
+            Employee employee = SessionManager.Retrieve("employee");
             if (ModelState.IsValid && employee != null)
             {
                 EmployeeBenefitsService service = new EmployeeBenefitsService(new EmployeeBenefitsRepository());
                 bool isSaved = service.Save(employee);
                 if (isSaved)
                 {
-                    SessionManager<Employee>.Remove("employee");
+                    SessionManager.Remove("employee");
                     TempData["IsSaved"] = true;
                 }
                 else
@@ -52,7 +55,7 @@ namespace Paylocity.EmployeeBenefitCalculator.Controllers
         [ChildActionOnly]
         public ActionResult Summary()
         {
-            Employee employee = SessionManager<Employee>.Retrieve("employee");
+            Employee employee = SessionManager.Retrieve("employee");
             if (employee != null)
                 return PartialView("_Summary", employee);
 

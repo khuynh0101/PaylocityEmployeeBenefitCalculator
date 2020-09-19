@@ -1,7 +1,8 @@
-﻿using ViewModel = Paylocity.Service.Models;
-using System;
+﻿using System;
 using System.Linq;
+using Paylocity.Common;
 using Paylocity.Data.Repositories;
+using ViewModel = Paylocity.Service.Models;
 
 namespace Paylocity.Service
 {

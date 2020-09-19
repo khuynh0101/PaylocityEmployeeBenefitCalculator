@@ -64,7 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
     <Compile Include="ModelBinder\EmployeeBinder.cs" />
     <Compile Include="Models\BenefitsSummary.cs" />
     <Compile Include="Models\Dependent.cs" />
@@ -74,6 +73,10 @@
     <Compile Include="IEmployeeBenefitsService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Paylocity.Common\Paylocity.Common.csproj">
+      <Project>{d1b06ce0-d317-4649-b12d-245942c00a0b}</Project>
+      <Name>Paylocity.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Paylocity.Data\Paylocity.Data.csproj">
       <Project>{1eaace8f-5744-4b3e-a9fe-8789b38727a2}</Project>
       <Name>Paylocity.Data</Name>
