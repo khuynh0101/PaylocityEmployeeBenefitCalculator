@@ -2,8 +2,8 @@
 
 @if (Model != null)
 { 
-<div>
-    <h4>Benefits Cost Summary for <span class="text-bold">@Model.Name</span></h4>
+<div id="summary">
+    <h4>Benefits Cost Summary</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,15 +35,15 @@
         <dd>
             <span class="text-bold"> @Html.DisplayFor(model => model.BenefitsSummary.TotalCost)</span>
         </dd>
-        <div class="row">
+        <dt class="row">
             <div class="col-md-12 col-md-offset-2">
-                <input type="button" value="Save" onclick="location.href='@Url.Action("Save")'" />
+                <input type="submit" value="Save Post" formaction='@Url.Action("Save")' />
             </div>
-        </div>
+        </dt>
 
             @if (TempData["IsSaved"] != null && !Convert.ToBoolean(TempData["IsSaved"]))
             { 
-                <div>Unable to save. Please try again.</div>   
+                <dt>Unable to save. Please try again.</dt>   
             }
     </dl>
 </div>

@@ -1,5 +1,4 @@
-﻿
-using Paylocity.Service.Models;
+﻿using Paylocity.Service.Models;
 
 namespace Paylocity.Service
 {

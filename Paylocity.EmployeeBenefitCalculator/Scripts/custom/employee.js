@@ -23,9 +23,12 @@ const AddDependents = (event) => {
     divContainer.appendChild(input);
     divContainer.appendChild(removeButton);
     dependentsContainer.appendChild(divContainer);
+
+    document.querySelector("#summary").remove();
 }
 
 const RemoveDependents = (event, id) => {
     event.preventDefault();
     document.querySelector("#" + id).remove();
+    document.querySelector("#summary").remove();
 }

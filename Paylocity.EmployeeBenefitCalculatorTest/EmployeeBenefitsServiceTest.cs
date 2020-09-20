@@ -1,8 +1,8 @@
-﻿using Paylocity.Service;
+﻿using Paylocity.Data.Repositories;
+using Paylocity.Service;
+using Paylocity.Service.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Paylocity.Service.Models;
-using Paylocity.Data.Repositories;
 
 namespace Paylocity.EmployeeBenefitCalculatorTest
 {

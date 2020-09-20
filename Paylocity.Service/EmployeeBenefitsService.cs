@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
-using Paylocity.Common;
+﻿using Paylocity.Common;
 using Paylocity.Data.Repositories;
 using ViewModel = Paylocity.Service.Models;
+using System;
+using System.Linq;
 
 namespace Paylocity.Service
 {
@@ -17,13 +17,16 @@ namespace Paylocity.Service
         public bool Save(ViewModel.Employee employeeModel)
         {
             Data.Employee employeeData = new Data.Employee() { Name = employeeModel.Name };
+            //just in case website doesn't send the employee's benefits information
+            if (employeeModel.BenefitsSummary == null)
+                employeeModel.BenefitsSummary = CalculateBenefitsCost(employeeModel);
 
-            foreach(var dependents in employeeModel.Dependents)
+            foreach (var dependents in employeeModel.Dependents)
             {
                 employeeData.Dependents.Add(new Data.Dependent() { Name = dependents.Name });
             }
             employeeData.Benefits.Add(new Data.Benefit() { DependentCost = employeeModel.BenefitsSummary.DependentsCost, EmployeeCost = employeeModel.BenefitsSummary.EmployeeCost });
-
+      
             bool isSaved = _repository.SaveEmployeeBenefits(employeeData);
             return isSaved;
         }

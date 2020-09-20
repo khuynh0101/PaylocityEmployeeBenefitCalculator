@@ -23,6 +23,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Dependents, htmlAttributes: new { @class = "control-label col-md-2" })
             <div id="dependentsContainer" class="col-md-10">
+                @if (Model != null)
+                {
+                    for (int i=0; i< Model.Dependents.Count; i++)
+                    {
+                        var dependent = Model.Dependents[i];
+                        string id = string.Format("a{0}", i);
+                        <div id="@id" class="form-inline">
+                            @Html.EditorFor(d => dependent.Name, new { htmlAttributes = new { @class = "form-control", Name="dependent" } })
+                            <button onclick="RemoveDependents(event, '@id')">Remove</button>
+                        </div>
+                    }
+                }
             </div>
         </div>
         <div class="form-group">
