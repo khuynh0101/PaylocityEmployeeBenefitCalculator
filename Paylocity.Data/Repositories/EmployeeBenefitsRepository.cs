@@ -8,7 +8,7 @@
             using (PaylocityEntities context = new PaylocityEntities())
             { 
                 context.Employees.Add(employeeDataModel);
-                context.SaveChanges();
+                numRec = context.SaveChanges();
             }            
             return numRec > 0;
         }

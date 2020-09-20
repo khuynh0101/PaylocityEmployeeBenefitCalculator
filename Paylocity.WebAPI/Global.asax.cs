@@ -14,7 +14,7 @@ namespace Paylocity.WebAPI
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            Log.Initialize(Server.MapPath("~"));
+            Log.Initialize(Server.MapPath("~"), "Paylocity");
         }
     }
 }
