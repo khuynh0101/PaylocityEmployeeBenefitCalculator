@@ -2,49 +2,49 @@
 
 @if (Model != null)
 { 
-<div id="summary">
-    <h4>Benefits Cost Summary</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.BenefitsSummary.TotalSalary)
-        </dt>
+    <div id="summary">
+        <h4>Benefits Cost Summary</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.BenefitsSummary.TotalSalary)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BenefitsSummary.TotalSalary)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BenefitsSummary.EmployeeCost)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BenefitsSummary.TotalSalary)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BenefitsSummary.EmployeeCost)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BenefitsSummary.EmployeeCost)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.BenefitsSummary.EmployeeCost)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BenefitsSummary.DependentsCost)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.BenefitsSummary.DependentsCost)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.BenefitsSummary.DependentsCost)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BenefitsSummary.TotalCost)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BenefitsSummary.DependentsCost)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BenefitsSummary.TotalCost)
+            </dt>
 
-        <dd>
-            <span class="text-bold"> @Html.DisplayFor(model => model.BenefitsSummary.TotalCost)</span>
-        </dd>
-        <dt class="row">
+            <dd>
+                <span class="text-bold"> @Html.DisplayFor(model => model.BenefitsSummary.TotalCost)</span>
+            </dd>
+        </dl>
+        <div class="row">
             <div class="col-md-12 col-md-offset-2">
                 <input type="submit" value="Save Post" formaction='@Url.Action("Save")' />
             </div>
-        </dt>
+        </div>
 
-            @if (TempData["IsSaved"] != null && !Convert.ToBoolean(TempData["IsSaved"]))
-            { 
-                <dt>Unable to save. Please try again.</dt>   
-            }
-    </dl>
-</div>
+        @if (TempData["IsSaved"] != null && !Convert.ToBoolean(TempData["IsSaved"]))
+        {
+            <div>Unable to save. Please try again.</div>
+        }
+    </div>
 }
