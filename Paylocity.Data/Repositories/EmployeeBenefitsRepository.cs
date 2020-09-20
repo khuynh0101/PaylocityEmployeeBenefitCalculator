@@ -4,10 +4,12 @@
     {
         public bool SaveEmployeeBenefits(Employee employeeDataModel)
         {
-            PaylocityEntities context = new PaylocityEntities();            
-            context.Employees.Add(employeeDataModel);
-
-            int numRec = context.SaveChanges();
+            int numRec = 0;
+            using (PaylocityEntities context = new PaylocityEntities())
+            { 
+                context.Employees.Add(employeeDataModel);
+                context.SaveChanges();
+            }            
             return numRec > 0;
         }
     }
