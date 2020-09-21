@@ -22,7 +22,7 @@ namespace Paylocity.EmployeeBenefitCalculator.Controllers
             if (ModelState.IsValid)
             {                                
                 employeeModel.BenefitsSummary = new EmployeeBenefitsService(new EmployeeBenefitsRepository()).CalculateBenefitsCost(employeeModel);
-                TempData["EmployeeModel"] = employeeModel;
+                //TempData["EmployeeModel"] = employeeModel;
             }
             return View(employeeModel);
         }

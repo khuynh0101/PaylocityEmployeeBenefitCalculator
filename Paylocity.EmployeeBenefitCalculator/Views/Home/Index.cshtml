@@ -25,12 +25,12 @@
             <div id="dependentsContainer" class="col-md-10">
                 @if (Model != null)
                 {
-                    for (int i=0; i< Model.Dependents.Count; i++)
+                    for (int i = 0; i < Model.Dependents.Count; i++)
                     {
                         var dependent = Model.Dependents[i];
                         string id = string.Format("a{0}", i);
                         <div id="@id" class="form-inline">
-                            @Html.EditorFor(d => dependent.Name, new { htmlAttributes = new { @class = "form-control", Name="dependent" } })
+                            @Html.EditorFor(d => dependent.Name, new { htmlAttributes = new { @class = "form-control", Name = "dependent" } })
                             <button onclick="RemoveDependents(event, '@id')">Remove</button>
                         </div>
                     }
@@ -52,11 +52,54 @@
             <div>Employee benefits cost saved.</div>
         }
     </div>
-    <div>
-        @{
-            Html.RenderAction("Summary", "Home");
-        }
-    </div>
+    if (Model != null && Model.BenefitsSummary != null)
+    {
+        <div id="summary">
+            <h4>Benefits Cost Summary</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BenefitsSummary.TotalSalary)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BenefitsSummary.TotalSalary)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BenefitsSummary.EmployeeCost)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BenefitsSummary.EmployeeCost)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BenefitsSummary.DependentsCost)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BenefitsSummary.DependentsCost)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BenefitsSummary.TotalCost)
+                </dt>
+
+                <dd>
+                    <span class="text-bold"> @Html.DisplayFor(model => model.BenefitsSummary.TotalCost)</span>
+                </dd>
+            </dl>
+            <div class="row">
+                <div class="col-md-12 col-md-offset-2">
+                    <input type="submit" value="Save Post" formaction='@Url.Action("Save")' />
+                </div>
+            </div>
+
+            @if (TempData["IsSaved"] != null && !Convert.ToBoolean(TempData["IsSaved"]))
+            {
+                <div>Unable to save. Please try again.</div>
+            }
+        </div>
+    }
 }
 
 @section Scripts {
