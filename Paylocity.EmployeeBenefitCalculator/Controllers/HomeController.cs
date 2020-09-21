@@ -20,28 +20,22 @@ namespace Paylocity.EmployeeBenefitCalculator.Controllers
         public ActionResult Index([ModelBinder(typeof(EmployeeBinder))] Employee employeeModel)
         {
             if (ModelState.IsValid)
-            {                                
+            {                             
+                //calculating the benefits cost summary
                 employeeModel.BenefitsSummary = new EmployeeBenefitsService(new EmployeeBenefitsRepository()).CalculateBenefitsCost(employeeModel);
-                //TempData["EmployeeModel"] = employeeModel;
             }
             return View(employeeModel);
         }
         [HttpPost]
         public ActionResult Save([ModelBinder(typeof(EmployeeBinder))] Employee employeeModel)
         {
-            if (ModelState.IsValid && employeeModel != null)
+            if (ModelState.IsValid)
             {
+                //saving the employee/dependents
                 EmployeeBenefitsService service = new EmployeeBenefitsService(new EmployeeBenefitsRepository());
                 TempData["IsSaved"] = service.Save(employeeModel);               
             }
             return RedirectToAction("Index");
-        }
-
-        [ChildActionOnly]
-        public ActionResult Summary()
-        {
-            Employee employee = TempData["EmployeeModel"] as Employee;
-            return (employee == null) ? PartialView("_Summary") : PartialView("_Summary", employee);
         }
 
         protected override void OnException(ExceptionContext filterContext)

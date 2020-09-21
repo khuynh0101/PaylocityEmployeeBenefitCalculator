@@ -86,9 +86,9 @@ namespace Paylocity.EmployeeBenefitCalculatorTest
         public void SaveEmployeeBenefits_ShouldReturnBoolean()
         {
             Mock<Employee> mockEmployee = new Mock<Employee>();
-            mockEmployee.Object.Name = "test";
-            mockEmployee.Object.Dependents.Add(new Dependent() { Name = "Apple" });
-            mockEmployee.Object.Dependents.Add(new Dependent() { Name = "Ariana" });
+            mockEmployee.Object.Name = "Khuong";
+            mockEmployee.Object.Dependents.Add(new Dependent() { Name = "Kylie" });
+            mockEmployee.Object.Dependents.Add(new Dependent() { Name = "Evie" });
             mockEmployee.Object.BenefitsSummary = new BenefitsSummary() { DependentsCost = 1000, EmployeeCost = 1000, TotalCost = 2000, TotalSalary = 52000 };
 
             Data.Employee employeeData = new Data.Employee() { Name = mockEmployee.Object.Name };
@@ -101,7 +101,7 @@ namespace Paylocity.EmployeeBenefitCalculatorTest
             Mock<IEmployeeBenefitsRepository> mockRepository = new Mock<IEmployeeBenefitsRepository>();
 
             mockRepository.Setup(r => r.SaveEmployeeBenefits(It.IsAny<Data.Employee>())).Returns((Data.Employee target) => {
-                if (target.Name != "test")
+                if (target.Name != "Khuong")
                     return false;
                 if (target.Dependents.Count != 2)
                     return false;

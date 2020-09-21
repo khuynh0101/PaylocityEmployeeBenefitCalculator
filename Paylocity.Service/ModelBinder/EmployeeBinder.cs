@@ -10,9 +10,6 @@ namespace Paylocity.Service.ModelBinder
     { 
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
-            if (bindingContext == null)
-                throw new ArgumentNullException(nameof(bindingContext));
-
             NameValueCollection collection = controllerContext.HttpContext.Request.Form;
             Employee employeeModel = new Employee() { Name = collection["Name"] };
             string dependents = collection["Dependent"];
