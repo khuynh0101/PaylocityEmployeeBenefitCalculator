@@ -10,7 +10,9 @@ To get this solution working:
 
 
 Presentation Layer: MVC
+
 Data Layer:			Entity Framework
+
 API Endpoints:		WebAPI
 
 Database:			MS SQL Server
