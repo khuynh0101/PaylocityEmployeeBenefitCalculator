@@ -16,6 +16,10 @@ namespace Paylocity.Service.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal TotalCost { get; set; }
 
+        [Display(Name = "Cost Per Paycheck")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal CostPerPayCheck { get; set; }
+
         [Display(Name = "Total Salary")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal TotalSalary { get; set; }

@@ -81,9 +81,15 @@
                     @Html.DisplayFor(model => model.BenefitsSummary.DependentsCost)
                 </dd>
                 <dt>
-                    @Html.DisplayNameFor(model => model.BenefitsSummary.TotalCost)
+                    @Html.DisplayNameFor(model => model.BenefitsSummary.CostPerPayCheck)
                 </dt>
 
+                <dd>
+                    @Html.DisplayFor(model => model.BenefitsSummary.CostPerPayCheck)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BenefitsSummary.TotalCost)
+                </dt>
                 <dd>
                     <span class="text-bold"> @Html.DisplayFor(model => model.BenefitsSummary.TotalCost)</span>
                 </dd>

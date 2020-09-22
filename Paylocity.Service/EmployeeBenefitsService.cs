@@ -52,8 +52,10 @@ namespace Paylocity.Service
 
             benefitsSummary.DependentsCost = employeeModel.Dependents.Sum(x => x.Name.StartsWith("A", StringComparison.OrdinalIgnoreCase)
                                              ? (_percentDiscount * Constants.DependentBenefitsCost) : Constants.DependentBenefitsCost);
-
+            
             benefitsSummary.TotalCost = benefitsSummary.EmployeeCost + benefitsSummary.DependentsCost;
+
+            benefitsSummary.CostPerPayCheck = benefitsSummary.TotalCost / Constants.TotalPayCheck;
 
             return benefitsSummary;
         }
