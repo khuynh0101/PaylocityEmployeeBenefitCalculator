@@ -4,99 +4,119 @@
     ViewBag.Title = "Employee Benefits Calculator";
 }
 
-<h1 class="page-header header-title">Employee Benefits Calculator</h1>
+<h3 class="page-header header-title">Employee Benefits Calculator</h3>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h5>Enter employee's information to calculate their benefits cost.</h5>
+    <div class="container">
+        <h6>Enter employee's information to calculate their benefits cost.</h6>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Name, new { @class = "col-md-3 col-form-label" })
+            <div class="col-md-6">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
+            
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Dependents, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div id="dependentsContainer" class="col-md-10">
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Dependents, new { @class = "col-md-3 col-form-label" })
+            <div id="dependentsContainer" class="col-md-6">
                 @if (Model != null)
                 {
                     for (int i = 0; i < Model.Dependents.Count; i++)
                     {
                         var dependent = Model.Dependents[i];
                         string id = string.Format("a{0}", i);
-                        <div id="@id" class="form-inline">
-                            @Html.EditorFor(d => dependent.Name, new { htmlAttributes = new { @class = "form-control", Name = "dependent" } })
-                            <button onclick="RemoveDependents(event, '@id')">Remove</button>
+                        <div id="@id" class="row">
+                            <div class="col-md-7 pb-1">
+                                @Html.EditorFor(d => dependent.Name, new { htmlAttributes = new { @class = "form-control", Name = "dependent" } })
+                            </div>
+                            <div class="col-md-5"><button class="btn btn-primary" onclick="RemoveDependents(event, '@id')">Remove</button></div>
+
                         </div>
                     }
                 }
             </div>
         </div>
-        <div class="form-group">
-            <div id="dependentsContainer" class="col-md-12 col-md-offset-2">
-                <button onclick="AddDependents(event)" id="AddDecendents">Add</button>
+        <div class="form-group row">
+            <div id="dependentsContainer" class="col-md-9 offset-sm-0 offset-md-3">
+                <button class="btn btn-primary" onclick="AddDependents(event)" id="AddDecendents">Add</button>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Calculate Benefits Cost" />
+        <div class="form-group row">
+            <div class="col-md-9 offset-sm-0 offset-md-3">
+                <input class="btn btn-primary" type="submit" value="Calculate Benefits Cost" />
+                @if (TempData["IsSaved"] != null && Convert.ToBoolean(TempData["IsSaved"]))
+                {
+                    <div class="text-danger">Employee benefits cost saved.</div>
+                }
             </div>
         </div>
-        @if (TempData["IsSaved"] != null && Convert.ToBoolean(TempData["IsSaved"]))
-        {
-            <div>Employee benefits cost saved.</div>
-        }
+       
     </div>
     if (Model != null && Model.BenefitsSummary != null)
     {
         <div id="summary">
             <h4>Benefits Cost Summary</h4>
             <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.BenefitsSummary.TotalSalary)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.BenefitsSummary.TotalSalary)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.BenefitsSummary.EmployeeCost)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.BenefitsSummary.EmployeeCost)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.BenefitsSummary.DependentsCost)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.BenefitsSummary.DependentsCost)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.BenefitsSummary.CostPerPayCheck)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.BenefitsSummary.CostPerPayCheck)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.BenefitsSummary.TotalCost)
-                </dt>
-                <dd>
-                    <span class="text-bold"> @Html.DisplayFor(model => model.BenefitsSummary.TotalCost)</span>
-                </dd>
-            </dl>
             <div class="row">
-                <div class="col-md-12 col-md-offset-2">
-                    <input type="submit" value="Save Post" formaction='@Url.Action("Save")' />
+                <div class="col-md-2">
+                    <strong>
+                        @Html.DisplayNameFor(model => model.BenefitsSummary.TotalSalary)
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.BenefitsSummary.TotalSalary)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <strong>
+                        @Html.DisplayNameFor(model => model.BenefitsSummary.EmployeeCost)
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.BenefitsSummary.EmployeeCost)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <strong>
+                        @Html.DisplayNameFor(model => model.BenefitsSummary.DependentsCost)
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.BenefitsSummary.DependentsCost)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <strong>
+                        @Html.DisplayNameFor(model => model.BenefitsSummary.CostPerPayCheck)
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.BenefitsSummary.CostPerPayCheck)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <strong>
+                        @Html.DisplayNameFor(model => model.BenefitsSummary.TotalCost)
+                    </strong>
+                </div>
+                <div class="col-md-6">
+                    @Html.DisplayFor(model => model.BenefitsSummary.TotalCost)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 d-flex justify-content-center">
+                    <input class="btn btn-primary" type="submit" value="Save Post" formaction='@Url.Action("Save")' />
                 </div>
             </div>
 

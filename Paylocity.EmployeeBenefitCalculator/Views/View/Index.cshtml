@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Paylocity.Service.Models.EmployeesDependents>
+
+@{
+    ViewBag.Title = "View Employees And Dependents";
+}
+
+    <h3 class="page-header header-title">Employees and Dependents View</h3>
+    <div class="row">
+        <div class="col-md-2 font-weight-bold">
+            Employee Id
+        </div>
+        <div class="col-md-4 font-weight-bold">
+            Name
+        </div>
+        <div class="col-md-2 font-weight-bold">
+            Employee Benefit Cost
+        </div>
+        <div class="col-md-2 font-weight-bold">
+            Dependents Cost
+        </div>
+    </div>
+    @foreach (var employeeDependent in Model)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                @Html.DisplayFor(e => employeeDependent.EmployeeId)
+            </div>
+            <div class="col-md-4 text-capitalize">
+                @Html.DisplayFor(e => employeeDependent.EmployeeName)
+                <div class="row">
+                    <div class="col-4 font-weight-bold">
+                        Dependents:
+                    </div>
+                    <div class="col">
+                      @string.Join(", ", @employeeDependent.Dependents.Select(d=>d.Name))
+                    </div>
+                    @*@foreach (var dependent in employeeDependent.Dependents)
+                    {
+                        <div class="col">
+                            @dependent.Name
+                        </div>
+                    }*@
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(e => employeeDependent.TotalEmployeeCost)
+            </div>
+            <div class="col-md-2">
+                @Html.DisplayFor(e => employeeDependent.TotalDependCost)
+            </div>
+        </div>
+        <hr/>
+
+    }

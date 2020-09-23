@@ -4,6 +4,7 @@ using ViewModel = Paylocity.Service.Models;
 using DataModel = Paylocity.Data;
 using System;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Paylocity.Service
 {
@@ -14,6 +15,29 @@ namespace Paylocity.Service
         public EmployeeBenefitsService(IEmployeeBenefitsRepository repository)
         {
             _repository = repository;
+        }
+
+        public List<ViewModel.EmployeesDependents> GetAllEmployeesAndDependentsCost()
+        {
+            List<DataModel.EmployeesAndDependentsCost> data = _repository.GetAllEmployeesAndDependentsCost();
+            List<ViewModel.EmployeesDependents> employeesDependents = (from e in data
+                                                                       group e by e.EmployeeId into newData
+                                                                       select new ViewModel.EmployeesDependents()
+                                                                       {
+                                                                           EmployeeId = newData.Key,
+                                                                           EmployeeName = (from n in newData
+                                                                                           select n.EmployeeName).FirstOrDefault(),
+                                                                           TotalDependCost = (from n in newData
+                                                                                              select n.TotalDependCost).FirstOrDefault().Value,
+                                                                           TotalEmployeeCost = (from n in newData
+                                                                                                select n.TotalEmployeeCost).FirstOrDefault().Value,
+                                                                           Dependents = (from n in newData
+                                                                                         select new ViewModel.Dependent()
+                                                                                         {
+                                                                                             Name = n.DependentName,
+                                                                                         }).ToList()
+                                                                       }).ToList();
+            return employeesDependents;
         }
 
         public bool Save(ViewModel.Employee employeeModel)

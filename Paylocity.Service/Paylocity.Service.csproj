@@ -68,6 +68,7 @@
     <Compile Include="Models\BenefitsSummary.cs" />
     <Compile Include="Models\Dependent.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeesDependents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmployeeBenefitsService.cs" />
     <Compile Include="IEmployeeBenefitsService.cs" />

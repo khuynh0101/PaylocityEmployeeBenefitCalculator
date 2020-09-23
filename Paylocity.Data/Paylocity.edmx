@@ -53,6 +53,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetAllEmployeesAndDependentsCost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="PaylocityModelStoreContainer">
           <EntitySet Name="Benefits" EntityType="Self.Benefits" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dependents" EntityType="Self.Dependents" Schema="dbo" store:Type="Tables" />
@@ -134,7 +135,29 @@
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Dependents" EntitySet="Dependents" />
           </AssociationSet>
+          <FunctionImport Name="GetAllEmployeesAndDependentsCost" ReturnType="Collection(PaylocityModel.EmployeesAndDependentsCost)" />
         </EntityContainer>
+        <ComplexType Name="GetAllEmployeesAndDependentsCost_Result">
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DependentName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="TotalEmployeeCost" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TotalDependCost" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="AllEmployeesAndDependentsCost">
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DependentName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="TotalEmployeeCost" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TotalDependCost" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="EmployeesAndDependentsCost">
+          <Property Type="Int32" Name="EmployeeId" Nullable="false" />
+          <Property Type="String" Name="EmployeeName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DependentName" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="TotalEmployeeCost" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="TotalDependCost" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -168,6 +191,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllEmployeesAndDependentsCost" FunctionName="PaylocityModel.Store.GetAllEmployeesAndDependentsCost">
+          <ResultMapping>
+              <ComplexTypeMapping TypeName="PaylocityModel.EmployeesAndDependentsCost">
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="DependentName" ColumnName="DependentName" />
+                <ScalarProperty Name="TotalEmployeeCost" ColumnName="TotalEmployeeCost" />
+                <ScalarProperty Name="TotalDependCost" ColumnName="TotalDependCost" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

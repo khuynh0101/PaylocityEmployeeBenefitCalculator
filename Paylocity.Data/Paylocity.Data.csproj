@@ -59,6 +59,12 @@
     <Compile Include="Employee.cs">
       <DependentUpon>Paylocity.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmployeesAndDependentsCost.cs">
+      <DependentUpon>Paylocity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAllEmployeesAndDependentsCost_Result.cs">
+      <DependentUpon>Paylocity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Paylocity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

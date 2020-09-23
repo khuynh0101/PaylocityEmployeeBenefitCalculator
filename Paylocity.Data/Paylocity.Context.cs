@@ -12,6 +12,8 @@ namespace Paylocity.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class PaylocityEntities : DbContext
     {
@@ -28,5 +30,10 @@ namespace Paylocity.Data
         public virtual DbSet<Benefit> Benefits { get; set; }
         public virtual DbSet<Dependent> Dependents { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+    
+        public virtual ObjectResult<EmployeesAndDependentsCost> GetAllEmployeesAndDependentsCost()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<EmployeesAndDependentsCost>("GetAllEmployeesAndDependentsCost");
+        }
     }
 }
