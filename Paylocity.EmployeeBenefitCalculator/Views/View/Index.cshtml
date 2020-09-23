@@ -4,51 +4,60 @@
     ViewBag.Title = "View Employees And Dependents";
 }
 
-    <h3 class="page-header header-title">Employees and Dependents View</h3>
-    <div class="row">
-        <div class="col-md-2 font-weight-bold">
-            Employee Id
-        </div>
-        <div class="col-md-4 font-weight-bold">
-            Name
-        </div>
-        <div class="col-md-2 font-weight-bold">
-            Employee Benefit Cost
-        </div>
-        <div class="col-md-2 font-weight-bold">
-            Dependents Cost
+<h3 class="page-header header-title">Employees and Dependents View</h3>
+<div class="row">
+    <div class="col-md-1 font-weight-bold">
+        Employee Id
+    </div>
+    <div class="col-md-4 font-weight-bold">
+        Name
+    </div>
+    <div class="col-md-2 font-weight-bold">
+        Employee Benefit Cost
+    </div>
+    <div class="col-md-2 font-weight-bold">
+        Dependents Cost
+    </div>
+</div>
+@foreach (var employeeDependent in Model)
+{
+<div class="row">
+    <div class="col-md-1">
+        @Html.DisplayFor(e => employeeDependent.EmployeeId)
+    </div>
+    <div class="col-md-4 text-capitalize">
+        @Html.DisplayFor(e => employeeDependent.EmployeeName)
+        <div class="row">
+            <div class="col-md-5 col-lg-4 font-weight-bold">
+                Dependents:
+            </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12 text-capitalize">
+                        @string.Join(", ", @employeeDependent.Dependents.Select(d => d.Name))
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
-    @foreach (var employeeDependent in Model)
-    {
+    <div class="col-md-2">
+        @Html.DisplayFor(e => employeeDependent.TotalEmployeeCost)
+    </div>
+    <div class="col-md-2">
+        @Html.DisplayFor(e => employeeDependent.TotalDependCost)
+    </div>
+    <div class="col-sm-3">
         <div class="row">
-            <div class="col-md-2">
-                @Html.DisplayFor(e => employeeDependent.EmployeeId)
-            </div>
-            <div class="col-md-4 text-capitalize">
-                @Html.DisplayFor(e => employeeDependent.EmployeeName)
-                <div class="row">
-                    <div class="col-4 font-weight-bold">
-                        Dependents:
-                    </div>
-                    <div class="col">
-                      @string.Join(", ", @employeeDependent.Dependents.Select(d=>d.Name))
-                    </div>
-                    @*@foreach (var dependent in employeeDependent.Dependents)
-                    {
-                        <div class="col">
-                            @dependent.Name
-                        </div>
-                    }*@
-                </div>
-            </div>
-            <div class="col-md-2">
-                @Html.DisplayFor(e => employeeDependent.TotalEmployeeCost)
-            </div>
-            <div class="col-md-2">
-                @Html.DisplayFor(e => employeeDependent.TotalDependCost)
+            <div class="col-sm-12">
+                <button class="btn btn-primary mr-1">Edit</button>
+                <button class="btn btn-primary">Delete</button>
             </div>
         </div>
-        <hr/>
+        
+    </div>
+</div>
 
-    }
+}
+
