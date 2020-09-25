@@ -11,7 +11,7 @@ namespace Paylocity.Service
     public class EmployeeBenefitsService : IEmployeeBenefitsService
     {
         private IEmployeeBenefitsRepository _repository;
-        private decimal _percentDiscount = (100.00m - Constants.DiscountPercentAmount) / 100.00m;
+        private readonly decimal _percentDiscount = (100.00m - Constants.DiscountPercentAmount) / 100.00m;
         public EmployeeBenefitsService(IEmployeeBenefitsRepository repository)
         {
             _repository = repository;
@@ -70,7 +70,6 @@ namespace Paylocity.Service
 
             benefitsSummary.TotalSalary = Constants.TotalPayCheck * Constants.PayCheckAmount;
 
-            //using ternary operator-discount if name start with "a" or "A"
             benefitsSummary.EmployeeCost = (employeeModel.Name.StartsWith("A", StringComparison.OrdinalIgnoreCase)) ?
                 (_percentDiscount * Constants.EmployeeBenefitsCost) : Constants.EmployeeBenefitsCost;
 

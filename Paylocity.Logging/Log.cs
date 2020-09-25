@@ -15,21 +15,14 @@ namespace Paylocity.Logging
     public class Log
     {
         private static ILog _log = null;
-        private static string _logFile = null;
 
-        public static void Initialize(string ApplicationPath, string LoggerName)
+        public static void Initialize(string configFile, string loggerName)
         {
-            _logFile = Path.Combine(ApplicationPath, "App_Data", "errors.log");
-            GlobalContext.Properties["LogFileName"] = _logFile;
-
-            log4net.Config.XmlConfigurator.Configure(new FileInfo(Path.Combine(ApplicationPath, "Log4Net.config")));
-
-            _log = LogManager.GetLogger(LoggerName);
-        }
-
-        public static string LogFile
-        {
-            get { return _logFile; }
+            if (_log == null)
+            {
+                log4net.Config.XmlConfigurator.Configure(new FileInfo(configFile));
+                _log = LogManager.GetLogger(loggerName);
+            }
         }
 
         public static void LogMessage(TracingLevel Level, Exception exception)
