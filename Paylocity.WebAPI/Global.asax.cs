@@ -1,6 +1,7 @@
 using Paylocity.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -14,7 +15,7 @@ namespace Paylocity.WebAPI
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            Log.Initialize(Server.MapPath("~"), "Paylocity");
+            Log.Initialize(Path.Combine(Server.MapPath("~"), "Log4Net.config"), "Paylocity");
         }
     }
 }
