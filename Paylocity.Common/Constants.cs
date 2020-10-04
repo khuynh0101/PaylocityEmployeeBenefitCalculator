@@ -9,6 +9,8 @@
         public const decimal DependentBenefitsCost = 500.00m;
         public const decimal EmployeeBenefitsCost = 1000.00m;
 
+        public const string a = "a";
+
         public const string m = "m";
     }
 }
